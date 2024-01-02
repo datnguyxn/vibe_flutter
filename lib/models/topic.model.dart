@@ -11,13 +11,13 @@ class Topic {
         _albums = albums,
         _data = data;
 
-  factory Topic.fromJson(Map<String, dynamic> json) {
-    return Topic(
-      id: json['id'],
-      title: json['title'],
-      albums: json['albums'],
-      data: json['data'],
-    );
+  Map<String, dynamic> toJson() {
+    return {
+      'id': _id,
+      'title': _title,
+      'albums': _albums,
+      'data': _data,
+    };
   }
 
   List<Album> _albums;

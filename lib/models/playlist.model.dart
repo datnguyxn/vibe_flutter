@@ -17,16 +17,16 @@ class Playlist {
         _createDate = createDate,
         _songs = songs;
 
-  factory Playlist.fromJson(Map<String, dynamic> json) {
-    return Playlist(
-      id: json['id'],
-      name: json['name'],
-      description: json['description'],
-      image: json['image'],
-      userId: json['userId'],
-      createDate: json['createDate'],
-      songs: json['songs'],
-    );
+  Map<String, dynamic> toJson() {
+    return {
+      'id': _id,
+      'name': _playlistName,
+      'description': _description,
+      'image': _image,
+      'userId': _userId,
+      'createDate': _createDate,
+      'songs': _songs,
+    };
   }
 
   String _createDate;

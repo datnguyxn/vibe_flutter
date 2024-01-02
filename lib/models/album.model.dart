@@ -20,17 +20,17 @@ class Album {
         _artistsId = artistsId,
         _songs = songs;
 
-  factory Album.fromJson(Map<String, dynamic> json) {
-    return Album(
-      id: json['id'],
-      name: json['name'],
-      description: json['description'],
-      image: json['image'],
-      createDate: json['createDate'],
-      artists: json['artists'],
-      artistsId: json['artistsId'],
-      songs: json['songs'],
-    );
+  Map<String, dynamic> toJson() {
+    return {
+      'id': _id,
+      'name': _name,
+      'description': _description,
+      'image': _image,
+      'createDate': _createDate,
+      'artists': _artists,
+      'artistsId': _artistsId,
+      'songs': _songs,
+    };
   }
 
   List<Artist> _artists;

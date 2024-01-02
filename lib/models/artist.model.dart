@@ -13,15 +13,15 @@ class Artist {
         _createDate = createDate,
         _playlistId = playlistId;
 
-  factory Artist.fromJson(Map<String, dynamic> json) {
-    return Artist(
-      id: json['id'],
-      name: json['name'],
-      bio: json['bio'],
-      thumbnail: json['thumbnail'],
-      createDate: json['createDate'],
-      playlistId: json['playlistId'],
-    );
+  Map<String, dynamic> toJson() {
+    return {
+      'id': _id,
+      'name': _name,
+      'bio': _bio,
+      'thumbnail': _thumbnail,
+      'createDate': _createDate,
+      'playlistId': _playlistId,
+    };
   }
 
   String _bio;

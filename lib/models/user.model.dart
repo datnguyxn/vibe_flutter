@@ -1,4 +1,5 @@
 import 'dart:ui';
+import 'dart:convert';
 
 class User {
   User(
@@ -6,7 +7,7 @@ class User {
       required String username,
       required String phoneNumber,
       required String password,
-      required Image image,
+      required String image,
       required String playlistId})
       : _uid = uid,
         _username = username,
@@ -15,18 +16,7 @@ class User {
         _image = image,
         _playlistId = playlistId;
 
-  factory User.fromJson(Map<String, dynamic> json) {
-    return User(
-      uid: json['uid'],
-      username: json['username'],
-      phoneNumber: json['phoneNumber'],
-      password: json['password'],
-      image: json['image'],
-      playlistId: json['playlistId'],
-    );
-  }
-
-  Image _image;
+  String _image;
   String _password;
   String _phoneNumber;
   String _playlistId;
@@ -38,6 +28,25 @@ class User {
     return 'User: {uid: $_uid, username: $_username, phoneNumber: $_phoneNumber, password: $_password, image: $_image, playlistId: $_playlistId}';
   }
 
+  Map<String, dynamic> toJson() => {
+        'uid': _uid,
+        'username': _username,
+        'phoneNumber': _phoneNumber,
+        'password': _password,
+        'image': _image,
+        'playlistId': _playlistId,
+      };
+  static User fromJson(snap) {
+    return User(
+      uid: snap['uuid'],
+      username: snap['username'],
+      phoneNumber: snap['phoneNumber'],
+      password: snap['password'],
+      image: snap['avatar'],
+      playlistId: snap['playlistId'],
+    );
+  }
+
   String get uid => _uid;
 
   String get username => _username;
@@ -46,7 +55,7 @@ class User {
 
   String get password => _password;
 
-  Image get image => _image;
+  String get image => _image;
 
   String get playlistId => _playlistId;
 
@@ -58,7 +67,7 @@ class User {
 
   set setPassword(String password) => _password = password;
 
-  set setImage(Image image) => _image = image;
+  set setImage(String image) => _image = image;
 
   set setPlaylistId(String playlistId) => _playlistId = playlistId;
 }

@@ -23,20 +23,20 @@ class Song {
         _artistsName = artistsName,
         _genres = genres;
 
-  factory Song.fromJson(Map<String, dynamic> json) {
-    return Song(
-      id: json['id'],
-      name: json['name'],
-      artistId: json['artistId'],
-      artistsId: json['artistsId'],
-      imageResource: json['imageResource'],
-      resource: json['resource'],
-      releaseDate: json['releaseDate'],
-      artistName: json['artistName'],
-      duration: json['duration'],
-      artistsName: json['artistsName'],
-      genres: json['genres'],
-    );
+  Map<String, dynamic> toJson() {
+    return {
+      'id': _id,
+      'name': _name,
+      'artistId': _artistId,
+      'artistsId': _artistsId,
+      'imageResource': _imageResource,
+      'resource': _resource,
+      'releaseDate': _releaseDate,
+      'artistName': _artistName,
+      'duration': _duration,
+      'artistsName': _artistsName,
+      'genres': _genres,
+    };
   }
 
   String _artistId;
